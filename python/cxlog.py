@@ -1,4 +1,4 @@
-from cxconstants import LOGFP, LOGFILENAME, LOG_LEVEL
+from cxconstants import LOGFP as _LOGFP, LOGFILENAME as _LOGFN, LOG_LEVEL as _LOGLVL
 from socket import gethostname as _get_hostname, gethostbyname as _get_host_by_name
 
 from os.path import join as _join
@@ -17,9 +17,9 @@ class Logger(object):
 
     def __init__(self, logfp=None, logfilename=None, loglevel=None):
 
-        if logfp: LOGFP = logfp
-        if logfilename: LOGFILENAME = logfilename
-        if loglevel: LOG_LEVEL = loglevel
+        LOGFP = logfp if logfp else _LOGFP
+        LOGFILENAME = logfilename if logfilename else _LOGFN
+        LOG_LEVEL = loglevel if loglevel else _LOGLVL
 
         self.logger = getLogger()
 
